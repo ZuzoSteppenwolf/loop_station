@@ -1,5 +1,8 @@
 package gui;
 
+import java.io.IOException;
+import java.io.InputStream;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -10,9 +13,6 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
-
-import java.io.IOException;
-import java.io.InputStream;
 
 public class RewardScreenController {
 
@@ -34,7 +34,7 @@ public class RewardScreenController {
 
     public void setScene(Scene scene) {
         // Add key event handler to select the reward
-        scene.addEventHandler(KeyEvent.KEY_PRESSED, this::handleKeyPress);
+        scene.addEventHandler(KeyEvent.KEY_RELEASED, this::handleKeyPress);
     }
 
     private void handleKeyPress(KeyEvent event) {

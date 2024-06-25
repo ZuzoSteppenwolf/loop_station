@@ -1,5 +1,10 @@
 package gui;
 
+import java.net.URL;
+import java.util.List;
+import java.util.Random;
+import java.util.ResourceBundle;
+
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
@@ -12,10 +17,6 @@ import javafx.scene.text.Text;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import java.net.URL;
-import java.util.List;
-import java.util.Random;
-import java.util.ResourceBundle;
 
 public class ScreenSaverController implements Initializable {
 
@@ -52,7 +53,7 @@ public class ScreenSaverController implements Initializable {
 
     public void setScene(Scene scene) {
         // Add key event handler to switch to the game screen
-        scene.addEventHandler(KeyEvent.KEY_PRESSED, this::handleKeyPress);
+        scene.addEventHandler(KeyEvent.KEY_RELEASED, this::handleKeyPress);
     }
 
     private void handleKeyPress(KeyEvent event) {

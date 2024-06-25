@@ -1,5 +1,11 @@
 package gui;
 
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Random;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -8,11 +14,6 @@ import javafx.scene.control.Button;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Random;
 
 public class UserInterfaceController {
 
@@ -71,7 +72,7 @@ public class UserInterfaceController {
 
         button1.sceneProperty().addListener((obs, oldScene, newScene) -> {
             if (newScene != null) {
-                newScene.addEventHandler(KeyEvent.KEY_PRESSED, this::handleKeyPressed);
+                newScene.addEventHandler(KeyEvent.KEY_RELEASED, this::handleKeyPressed);
             }
         });
     }
