@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1920.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ScreenSaverController">
+   <top>
+      <BorderPane prefHeight="200.0" prefWidth="1080.0" BorderPane.alignment="CENTER">
+         <center>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Loop Station" BorderPane.alignment="CENTER">
+               <font>
+                  <Font name="Franklin Gothic Demi" size="96.0" />
+               </font>
+            </Text>
+         </center>
+      </BorderPane>
+   </top>
+   <center>
+      <HBox prefHeight="1500.0" prefWidth="1080.0" BorderPane.alignment="CENTER">
+         <children>
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1080.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Did you know that...">
+                           <font>
+                              <Font name="Dubai Medium" size="64.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="screenSaverText" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                           <font>
+                              <Font name="Cambria" size="48.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </center>
+   <bottom>
+      <VBox alignment="CENTER" prefHeight="420.0" prefWidth="1080.0" BorderPane.alignment="CENTER">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="PRESS ANY BUTTON TO START PLAYING!">
+               <font>
+                  <Font name="System Bold" size="48.0" />
+               </font>
+            </Text>
+         </children>
+      </VBox>
+   </bottom>
+</BorderPane>

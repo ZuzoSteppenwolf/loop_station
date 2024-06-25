@@ -1,166 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.loop_station</groupId>
-    <artifactId>loop_station</artifactId>
-    <version>0</version>
-    <packaging>jar</packaging>
+    <artifactId>grpxx_javafx</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <!-- Im parent werden die Versionen der Dependencies,
+     sowie das Buildverhalten zentral festgelegt.
+      -->
+    <parent>
+        <groupId>fhw</groupId>
+        <artifactId>javafx</artifactId>
+        <version>1.0</version>
+        <relativePath>javafx-pom.xml</relativePath>
+    </parent>
 
-    <name>loop_station</name>
-
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <mainClass>com.loop_station.MainApp</mainClass>
-        <!-- DEPENDENCIES VERSIONS -->
-        <slf4j.version>2.0.12</slf4j.version>
-        <pi4j.version>2.5.1</pi4j.version>
-    </properties>
-
+    <!--
+    Das sieht hier zwar alles nach Doppelungen aus javafx-pom.xml aus, ist aber wichtig:
+    Dieses Paket nutzt die Pakete, die in javafx-pom.xml definiert sind
+    -->
     <dependencies>
+        <!-- JavaFX -->
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-controls</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-fxml</artifactId>
-            <version>11</version>
+        </dependency>
+
+        <!-- Windows JavaFX-Libraries immer in der JAR inkludieren -->
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-base</artifactId>
+            <classifier>win</classifier>
         </dependency>
         <dependency>
             <groupId>org.openjfx</groupId>
-            <artifactId>javafx-media</artifactId>
-            <version>11</version>
+            <artifactId>javafx-graphics</artifactId>
+            <classifier>win</classifier>
+        </dependency>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-controls</artifactId>
+            <classifier>win</classifier>
+        </dependency>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-fxml</artifactId>
+            <classifier>win</classifier>
         </dependency>
 
-        
+        <!-- Falls GSON verwendet wird -->
         <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>${slf4j.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-simple</artifactId>
-            <version>${slf4j.version}</version>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
         </dependency>
 
-        <!-- include Pi4J Core -->
+        <!-- Tests / JUnit -->
         <dependency>
-            <groupId>com.pi4j</groupId>
-            <artifactId>pi4j-core</artifactId>
-            <version>${pi4j.version}</version>
-        </dependency>
-
-        <!-- include Pi4J Plugins (Platforms and I/O Providers) -->
-        <dependency>
-            <groupId>com.pi4j</groupId>
-            <artifactId>pi4j-plugin-raspberrypi</artifactId>
-            <version>${pi4j.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.pi4j</groupId>
-            <artifactId>pi4j-plugin-gpiod</artifactId>
-            <version>${pi4j.version}</version>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
         </dependency>
     </dependencies>
-
-    <build>
-        <plugins>
-            <!-- adds file to let you run program outside of IDE -->
-            <plugin>
-                <artifactId>maven-antrun-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <phase>package</phase>
-                        <configuration>
-                            <tasks>
-                                <echo file="${project.build.directory}/runme.bat">start jlink-image\bin\javaw -jar modules\${project.artifactId}-${project.version}.jar</echo>
-                            </tasks>
-                        </configuration>
-                        <goals>
-                            <goal>run</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-
-            <!-- sets up the version of Java you are running -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.0</version>
-                <configuration>
-                    <release>11</release>
-                </configuration>
-                <dependencies>
-                    <dependency>
-                        <groupId>org.ow2.asm</groupId>
-                        <artifactId>asm</artifactId>
-                        <version>6.2.1</version>
-                    </dependency>
-                </dependencies>
-            </plugin>
-
-            <!-- Adds the mainClass to the jar so it will run outside -->
-            <plugin>
-                <artifactId>maven-jar-plugin</artifactId>
-                <version>3.1.0</version>
-                <configuration>
-                    <archive>
-                        <manifest>
-                            <mainClass>${mainClass}</mainClass>
-                        </manifest>
-                    </archive>
-                    <outputDirectory>${project.build.directory}/modules</outputDirectory>
-                </configuration>
-            </plugin>
-
-            <!-- Makes the jLink setup so you can give it to your friends  -->
-            <plugin>
-                <groupId>org.moditect</groupId>
-                <artifactId>moditect-maven-plugin</artifactId>
-                <version>1.0.0.Beta2</version>
-                <executions>
-                    <execution>
-                        <id>create-runtime-image</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>create-runtime-image</goal>
-                        </goals>
-                        <configuration>
-                            <modulePath>
-                                <path>${project.build.directory}/modules</path>
-                            </modulePath>
-                            <modules>
-                                <module>${project.groupId}</module>
-                            </modules>
-                            <launcher>
-                                <name>${project.groupId}</name>
-
-                            </launcher>
-                            <compression>2</compression>
-                            <stripDebug>true</stripDebug>
-                            <outputDirectory>${project.build.directory}/jlink-image</outputDirectory>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-
-            <!-- Copies the depend FX files to your program  -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-dependency-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>copy-dependencies</id>
-                        <phase>prepare-package</phase>
-                        <goals>
-                            <goal>copy-dependencies</goal>
-                        </goals>
-                        <configuration>
-                            <outputDirectory>${project.build.directory}/modules</outputDirectory>
-                            <includeScope>runtime</includeScope>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
-    </build>
 </project>

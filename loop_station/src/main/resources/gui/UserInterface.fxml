@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1900.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.UserInterfaceController">
+   <center>
+      <HBox prefHeight="950.0" prefWidth="1080.0" BorderPane.alignment="CENTER">
+         <children>
+            <VBox alignment="TOP_CENTER" prefHeight="950.0" prefWidth="1080.0">
+               <children>
+                  <VBox alignment="CENTER" prefHeight="500.0" prefWidth="1080.0" spacing="80.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Question: ">
+                           <font>
+                              <Font name="Bookman Old Style" size="48.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="questionTxt" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="JUSTIFY">
+                           <font>
+                              <Font size="64.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="100.0" prefWidth="100.0" spacing="10.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Correct Answers: ">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="correctAnswersCounter" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="350.0" prefWidth="100.0" spacing="50.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Fun Fact! Did you know that...">
+                           <font>
+                              <Font name="System Italic" size="36.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="funFactTxt" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER">
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </center>
+   <bottom>
+      <HBox prefHeight="800.0" prefWidth="200.0">
+         <children>
+            <HBox prefHeight="150.0" prefWidth="150.0" />
+            <Button fx:id="button1" mnemonicParsing="false" prefHeight="165.0" prefWidth="165.0" text="Button">
+               <font>
+                  <Font size="36.0" />
+               </font></Button>
+            <HBox prefHeight="100.0" prefWidth="400.0" />
+            <Button fx:id="button2" mnemonicParsing="false" prefHeight="165.0" prefWidth="165.0" text="Button">
+               <font>
+                  <Font size="36.0" />
+               </font></Button>
+            <HBox prefHeight="100.0" prefWidth="150.0" />
+         </children>
+      </HBox>
+   </bottom>
+   <top>
+      <BorderPane prefHeight="200.0" prefWidth="1080.0" BorderPane.alignment="CENTER">
+         <center>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Loop Station" BorderPane.alignment="CENTER">
+               <font>
+                  <Font name="Franklin Gothic Demi" size="96.0" />
+               </font>
+            </Text>
+         </center>
+      </BorderPane>
+   </top>
+</BorderPane>
