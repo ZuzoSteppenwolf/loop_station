@@ -107,9 +107,12 @@ public class UserInterfaceController {
 
     private void handleKeyPressed(KeyEvent event) {
         switch (event.getCode()) {
-            case Y -> handleAnswer(button1.getText());
-            case N -> handleAnswer(button2.getText());
-            default -> {}
+            case Y:
+                handleAnswer(button1.getText());
+                break;
+            case N: handleAnswer(button2.getText());
+                break;
+            default: {}
         }
     }
 

@@ -40,9 +40,13 @@ public class RewardScreenController {
     private void handleKeyPress(KeyEvent event) {
         if (!rewardChosen) {
             switch (event.getCode()) {
-                case Y -> selectReward(1);
-                case N -> selectReward(2);
-                default -> {}
+                case Y:
+                    selectReward(1);
+                    break;
+                case N:
+                    selectReward(2);
+                    break;
+                default: {}
             }
         } else {
             // Any key press after reward is chosen goes to screensaver

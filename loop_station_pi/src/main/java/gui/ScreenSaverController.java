@@ -57,7 +57,8 @@ public class ScreenSaverController implements Initializable {
 
     private void handleKeyPress(KeyEvent event) {
         switch (event.getCode()) {
-            case Y, N -> {
+            case Y: 
+            case N: {
                 factTimeline.stop();
                 Stage stage = (Stage) screenSaverText.getScene().getWindow();
                 stage.close();
@@ -83,7 +84,8 @@ public class ScreenSaverController implements Initializable {
                     e.printStackTrace();
                 }
             }
-            default -> {}
+            break;
+            default: {}
         }
     }
 }
