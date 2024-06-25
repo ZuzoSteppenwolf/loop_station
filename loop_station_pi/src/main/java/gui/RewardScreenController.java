@@ -61,7 +61,7 @@ public class RewardScreenController {
                 imagePath = QR_CODE_1;
                 reward1.setImage(loadImage(imagePath));
             } else if (rewardNumber == 2) {
-                imagePath = QR_CODE_1;
+                imagePath = QR_CODE_2;
                 reward2.setImage(loadImage(imagePath));
             }
 
