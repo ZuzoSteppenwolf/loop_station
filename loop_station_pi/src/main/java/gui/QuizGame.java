@@ -40,6 +40,7 @@ public class QuizGame extends Application {
         // Position the window at the top of the screen
         screenSaverStage.setX((Screen.getPrimary().getBounds().getWidth() - screenSaverStage.getWidth()) / 2);
         screenSaverStage.setY(0);
+        screenSaverStage.setFullScreen(true);
 
         // Set the scene in the controller to add the key event handler
         controller.setScene(scene);
