@@ -1,3 +1,6 @@
 loop_station_pi/.idea/*
 loop_station_pi/.vscode/*
 loop_station_pi/target/*
+loop_station/.idea/*
+loop_station/.vscode/*
+loop_station/target/*
