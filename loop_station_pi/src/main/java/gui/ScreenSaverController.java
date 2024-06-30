@@ -80,6 +80,8 @@ public class ScreenSaverController implements Initializable {
                     gameStage.setX((Screen.getPrimary().getBounds().getWidth() - gameStage.getWidth()) / 2);
                     gameStage.setY(0);
 
+                    gameStage.setFullScreen(true);
+
                     gameStage.show();
                 } catch (Exception e) {
                     e.printStackTrace();
