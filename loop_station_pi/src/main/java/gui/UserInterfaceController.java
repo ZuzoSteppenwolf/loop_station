@@ -128,6 +128,7 @@ public class UserInterfaceController {
             rewardStage.setScene(scene);
             rewardStage.setTitle("Choose Your Reward");
 
+            rewardStage.setFullScreenExitHint("");
             rewardStage.setFullScreen(true);
 
             controller.setScene(scene);

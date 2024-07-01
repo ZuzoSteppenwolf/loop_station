@@ -101,6 +101,7 @@ public class RewardScreenController {
             screenSaverStage.setX((Screen.getPrimary().getBounds().getWidth() - screenSaverStage.getWidth()) / 2);
             screenSaverStage.setY(0);
 
+            screenSaverStage.setFullScreenExitHint("");
             screenSaverStage.setFullScreen(true);
 
             ScreenSaverController controller = loader.getController();
