@@ -2,6 +2,7 @@ package gui;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Cursor;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Screen;
@@ -31,6 +32,7 @@ public class QuizGame extends Application {
 
         Stage screenSaverStage = new Stage();
         screenSaverStage.setScene(scene);
+        screenSaverStage.getScene().setCursor(Cursor.NONE);
         screenSaverStage.setTitle("Screen Saver");
 
         // Set the size of the window

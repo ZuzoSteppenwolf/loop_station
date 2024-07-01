@@ -5,6 +5,7 @@ import java.io.InputStream;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Cursor;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -95,6 +96,7 @@ public class RewardScreenController {
 
             Stage screenSaverStage = new Stage();
             screenSaverStage.setScene(scene);
+            screenSaverStage.getScene().setCursor(Cursor.NONE);
             screenSaverStage.setTitle("Screen Saver");
 
             // Position the window at the top of the screen

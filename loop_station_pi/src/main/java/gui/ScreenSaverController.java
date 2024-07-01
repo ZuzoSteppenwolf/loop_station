@@ -10,6 +10,7 @@ import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Cursor;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyEvent;
@@ -70,6 +71,7 @@ public class ScreenSaverController implements Initializable {
                     Parent root = FXMLLoader.load(getClass().getResource("/gui/UserInterface.fxml"));
                     Scene scene = new Scene(root, 1080, 1920);
                     gameStage.setScene(scene);
+                    gameStage.getScene().setCursor(Cursor.NONE);
                     gameStage.setTitle("Quiz Game");
 
                     // Set the size of the window

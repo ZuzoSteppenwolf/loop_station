@@ -8,6 +8,7 @@ import java.util.Random;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Cursor;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -119,6 +120,10 @@ public class UserInterfaceController {
 
     private void showRewardScreen() {
         try {
+            // Close the current game stage
+            Stage gameStage = (Stage) questionTxt.getScene().getWindow();
+            gameStage.close();
+            
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/RewardScreen.fxml"));
             Parent root = loader.load();
             RewardScreenController controller = loader.getController();
@@ -126,6 +131,7 @@ public class UserInterfaceController {
             Scene scene = new Scene(root, 1080, 1500);
             Stage rewardStage = new Stage();
             rewardStage.setScene(scene);
+            rewardStage.getScene().setCursor(Cursor.NONE);
             rewardStage.setTitle("Choose Your Reward");
 
             rewardStage.setFullScreenExitHint("");
@@ -133,9 +139,7 @@ public class UserInterfaceController {
 
             controller.setScene(scene);
 
-            // Close the current game stage
-            Stage gameStage = (Stage) questionTxt.getScene().getWindow();
-            gameStage.close();
+            
 
             rewardStage.show();
         } catch (IOException e) {
