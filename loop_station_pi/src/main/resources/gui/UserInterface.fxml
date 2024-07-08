@@ -70,7 +70,7 @@
       </HBox>
    </center>
    <bottom>
-      <HBox prefHeight="408.0" prefWidth="200.0">
+      <HBox prefHeight="650.0" prefWidth="200.0">
          <children>
             <HBox prefHeight="150.0" prefWidth="50.0" />
             <Button fx:id="button1" mnemonicParsing="false" prefHeight="390.0" prefWidth="390.0" styleClass="text-id" text="Button" wrapText="true">
@@ -89,7 +89,7 @@
       </HBox>
    </bottom>
    <top>
-      <BorderPane prefHeight="200.0" prefWidth="1080.0" BorderPane.alignment="CENTER">
+      <BorderPane prefHeight="350.0" prefWidth="1080.0" BorderPane.alignment="CENTER">
          <center>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-id" text="Loop Station" BorderPane.alignment="CENTER">
                <font>

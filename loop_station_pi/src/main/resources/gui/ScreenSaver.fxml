@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1920.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ScreenSaverController">
    <top>
-      <BorderPane prefHeight="200.0" prefWidth="1080.0" BorderPane.alignment="CENTER">
+      <BorderPane prefHeight="350.0" prefWidth="1080.0" BorderPane.alignment="CENTER">
          <center>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Loop Station" BorderPane.alignment="CENTER" styleClass="text-id">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-id" text="Loop Station" BorderPane.alignment="CENTER">
                <font>
                   <Font name="Franklin Gothic Demi" size="96.0" />
                </font>
@@ -22,12 +25,12 @@
                <children>
                   <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1080.0">
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Did you know that..." styleClass="text-id">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-id" text="Did you know that...">
                            <font>
                               <Font name="Dubai Medium" size="64.0" />
                            </font>
                         </Text>
-                        <Text fx:id="screenSaverText" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" styleClass="text-id">
+                        <Text fx:id="screenSaverText" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-id" text="Text">
                            <font>
                               <Font name="Cambria" size="48.0" />
                            </font>
@@ -40,9 +43,9 @@
       </HBox>
    </center>
    <bottom>
-      <VBox alignment="CENTER" prefHeight="420.0" prefWidth="1080.0" BorderPane.alignment="CENTER">
+      <VBox alignment="CENTER" prefHeight="700.0" prefWidth="1080.0" BorderPane.alignment="CENTER">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="PRESS ANY BUTTON TO START PLAYING!" styleClass="text-id">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-id" text="PRESS ANY BUTTON TO START PLAYING!" textAlignment="CENTER" wrappingWidth="700.0">
                <font>
                   <Font name="System Bold" size="48.0" />
                </font>
