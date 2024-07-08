@@ -13,11 +13,16 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class UserInterfaceController {
 
+    @FXML
+    private VBox questionScene;
+    @FXML
+    private VBox factScene;
     @FXML
     private Text questionTxt;
     @FXML
@@ -36,6 +41,7 @@ public class UserInterfaceController {
     private final int requiredCorrectAnswers = 3;
     private final int totalQuestionsToAsk = 5;
     private boolean gameEnded = false;
+    private boolean isFactScene = false;
 
     private List<Question> questions = new ArrayList<>(List.of(
             new Question("Is the sky blue?", "Yes", "No", "Yes",
@@ -75,9 +81,7 @@ public class UserInterfaceController {
                     "Many trees grow taller than houses."),
 
             new Question("Which is heavier?", "Elephant", "Mouse", "Elephant",
-                    "Elephants are significantly heavier than mice.")
-    ));
-
+                    "Elephants are significantly heavier than mice.")));
 
     private List<Question> selectedQuestions;
 
@@ -86,6 +90,11 @@ public class UserInterfaceController {
         // Shuffle and select 5 questions from the pool
         Collections.shuffle(questions, new Random());
         selectedQuestions = questions.subList(0, totalQuestionsToAsk);
+
+        // sets the visibility of the question and fact scenes
+        isFactScene = false;
+        questionScene.setVisible(!isFactScene);
+        factScene.setVisible(isFactScene);
 
         updateQuestion();
         button1.setOnAction(e -> handleAnswer(button1.getText()));
@@ -105,12 +114,20 @@ public class UserInterfaceController {
             button1.setText(currentQuestion.getOptionA());
             button2.setText(currentQuestion.getOptionB());
             correctAnswersCounter.setText(correctAnswers + "/" + requiredCorrectAnswers);
-            funFactTxt.setText(currentQuestion.getFunFact()); // Display the fun fact associated with the current question
+
+            // Display the fun fact associated with the previous question
+            int lastquestIdx = currentQuestionIndex - 1;
+            if (lastquestIdx >= 0) {
+                Question lastQuestion = selectedQuestions.get(lastquestIdx);
+                funFactTxt.setText(lastQuestion.getFunFact());
+            }
+            // funFactTxt.setText(currentQuestion.getFunFact()); // Display the fun fact
+            // associated with the current
+            // question
         } else {
             endGame();
         }
     }
-
 
     private void handleAnswer(String answer) {
         if (gameEnded) {
@@ -137,15 +154,26 @@ public class UserInterfaceController {
             switchToScreenSaver();
             return;
         }
+        if (isFactScene) {
+            isFactScene = false;
+            questionScene.setVisible(!isFactScene);
+            factScene.setVisible(isFactScene);
 
-        switch (event.getCode()) {
-            case Y:
-                handleAnswer(button1.getText());
-                break;
-            case N:
-                handleAnswer(button2.getText());
-                break;
-            default: {}
+        } else {
+            isFactScene = true;
+            questionScene.setVisible(!isFactScene);
+            factScene.setVisible(isFactScene);
+
+            switch (event.getCode()) {
+                case Y:
+                    handleAnswer(button1.getText());
+                    break;
+                case N:
+                    handleAnswer(button2.getText());
+                    break;
+                default: {
+                }
+            }
         }
     }
 
