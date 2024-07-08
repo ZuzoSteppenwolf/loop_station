@@ -219,6 +219,8 @@ public class UserInterfaceController {
             screenSaverStage.getScene().setCursor(Cursor.NONE);
             screenSaverStage.setTitle("Screen Saver");
 
+            screenSaverStage.getScene().getStylesheets().add(getClass().getResource("/styles/style.css").toExternalForm());
+
             screenSaverStage.setFullScreenExitHint("");
             screenSaverStage.setFullScreen(true);
 
@@ -245,6 +247,8 @@ public class UserInterfaceController {
             rewardStage.setScene(scene);
             rewardStage.getScene().setCursor(Cursor.NONE);
             rewardStage.setTitle("Choose Your Reward");
+
+            //rewardStage.getScene().getStylesheets().add(getClass().getResource("/styles/style.css").toExternalForm());
 
             rewardStage.setFullScreenExitHint("");
             rewardStage.setFullScreen(true);

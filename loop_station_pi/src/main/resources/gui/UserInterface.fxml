@@ -18,12 +18,12 @@
                      <children>
                         <VBox alignment="CENTER" prefHeight="500.0" prefWidth="1080.0" spacing="80.0">
                            <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Question: ">
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-id" text="Question: ">
                                  <font>
                                     <Font name="Bookman Old Style" size="48.0" />
                                  </font>
                               </Text>
-                              <Text fx:id="questionTxt" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="1000.0">
+                              <Text fx:id="questionTxt" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-id" text="Text" textAlignment="CENTER" wrappingWidth="1000.0">
                                  <font>
                                     <Font size="64.0" />
                                  </font>
@@ -32,12 +32,12 @@
                         </VBox>
                         <VBox alignment="CENTER" prefHeight="100.0" prefWidth="100.0" spacing="10.0">
                            <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Correct Answers: ">
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-id" text="Correct Answers: ">
                                  <font>
                                     <Font size="24.0" />
                                  </font>
                               </Text>
-                              <Text fx:id="correctAnswersCounter" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER">
+                              <Text fx:id="correctAnswersCounter" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-id" text="Text" textAlignment="CENTER">
                                  <font>
                                     <Font size="24.0" />
                                  </font>
@@ -50,12 +50,12 @@
                      <children>
                         <VBox alignment="CENTER" prefHeight="350.0" prefWidth="100.0" spacing="50.0">
                            <children>
-                              <Text fx:id="funFactField" strokeType="OUTSIDE" strokeWidth="0.0" text="Fun Fact! Did you know that...">
+                              <Text fx:id="funFactField" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-id" text="Fun Fact! Did you know that...">
                                  <font>
                                     <Font name="System Italic" size="36.0" />
                                  </font>
                               </Text>
-                              <Text fx:id="funFactTxt" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="1000.0">
+                              <Text fx:id="funFactTxt" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-id" text="Text" textAlignment="CENTER" wrappingWidth="1000.0">
                                  <font>
                                     <Font size="36.0" />
                                  </font>
@@ -70,26 +70,28 @@
       </HBox>
    </center>
    <bottom>
-      <HBox prefHeight="800.0" prefWidth="200.0">
+      <HBox prefHeight="408.0" prefWidth="200.0">
          <children>
-            <HBox prefHeight="150.0" prefWidth="150.0" />
-            <Button fx:id="button1" mnemonicParsing="false" prefHeight="290.0" prefWidth="290.0" text="Button" wrapText="true">
+            <HBox prefHeight="150.0" prefWidth="50.0" />
+            <Button fx:id="button1" mnemonicParsing="false" prefHeight="390.0" prefWidth="390.0" styleClass="text-id" text="Button" wrapText="true">
                <font>
                   <Font size="36.0" />
-               </font></Button>
+               </font>
+            </Button>
             <HBox prefHeight="100.0" prefWidth="200.0" />
-            <Button fx:id="button2" mnemonicParsing="false" prefHeight="290.0" prefWidth="290.0" text="Button" wrapText="true">
+            <Button fx:id="button2" mnemonicParsing="false" prefHeight="390.0" prefWidth="390.0" styleClass="text-id" text="Button" wrapText="true">
                <font>
                   <Font size="36.0" />
-               </font></Button>
-            <HBox prefHeight="100.0" prefWidth="150.0" />
+               </font>
+            </Button>
+            <HBox prefHeight="100.0" prefWidth="50.0" />
          </children>
       </HBox>
    </bottom>
    <top>
       <BorderPane prefHeight="200.0" prefWidth="1080.0" BorderPane.alignment="CENTER">
          <center>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Loop Station" BorderPane.alignment="CENTER">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-id" text="Loop Station" BorderPane.alignment="CENTER">
                <font>
                   <Font name="Franklin Gothic Demi" size="96.0" />
                </font>

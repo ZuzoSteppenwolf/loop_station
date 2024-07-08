@@ -34,6 +34,9 @@ public class QuizGame extends Application {
         screenSaverStage.setScene(scene);
         screenSaverStage.getScene().setCursor(Cursor.NONE);
         screenSaverStage.setTitle("Screen Saver");
+        
+        // style the window
+        screenSaverStage.getScene().getStylesheets().add(getClass().getResource("/styles/style.css").toExternalForm());
 
         // Set the size of the window
         screenSaverStage.setWidth(1080);

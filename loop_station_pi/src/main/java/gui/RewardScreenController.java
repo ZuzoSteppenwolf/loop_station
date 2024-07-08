@@ -99,6 +99,8 @@ public class RewardScreenController {
             screenSaverStage.getScene().setCursor(Cursor.NONE);
             screenSaverStage.setTitle("Screen Saver");
 
+            screenSaverStage.getScene().getStylesheets().add(getClass().getResource("/styles/style.css").toExternalForm());
+
             // Position the window at the top of the screen
             screenSaverStage.setX((Screen.getPrimary().getBounds().getWidth() - screenSaverStage.getWidth()) / 2);
             screenSaverStage.setY(0);
@@ -108,6 +110,8 @@ public class RewardScreenController {
 
             ScreenSaverController controller = loader.getController();
             controller.setScene(scene);
+
+            
 
             screenSaverStage.show();
         } catch (IOException e) {

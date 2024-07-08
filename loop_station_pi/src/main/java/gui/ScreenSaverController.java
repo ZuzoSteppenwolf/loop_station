@@ -74,6 +74,8 @@ public class ScreenSaverController implements Initializable {
                     gameStage.getScene().setCursor(Cursor.NONE);
                     gameStage.setTitle("Quiz Game");
 
+                    gameStage.getScene().getStylesheets().add(getClass().getResource("/styles/style.css").toExternalForm());
+
                     // Set the size of the window
                     gameStage.setWidth(1080);
                     gameStage.setHeight(1920);

@@ -12,7 +12,7 @@
    <top>
       <BorderPane prefHeight="200.0" prefWidth="1080.0" BorderPane.alignment="CENTER">
          <center>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Loop Station" BorderPane.alignment="CENTER">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Loop Station" BorderPane.alignment="CENTER" styleClass="text-id">
                <font>
                   <Font name="Franklin Gothic Demi" size="96.0" />
                </font>
@@ -27,12 +27,12 @@
                <children>
                   <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="1080.0" spacing="50.0">
                      <children>
-                        <Text fx:id="CongratsText" strokeType="OUTSIDE" strokeWidth="0.0" text="Congratulations! You won!">
+                        <Text fx:id="CongratsText" strokeType="OUTSIDE" strokeWidth="0.0" text="Congratulations! You won!" styleClass="text-id">
                            <font>
                               <Font size="48.0" />
                            </font>
                         </Text>
-                        <Text fx:id="ChooseRewardText" strokeType="OUTSIDE" strokeWidth="0.0" text="You can now choose your reward">
+                        <Text fx:id="ChooseRewardText" strokeType="OUTSIDE" strokeWidth="0.0" text="You can now choose your reward" styleClass="text-id">
                            <font>
                               <Font size="30.0" />
                            </font>
@@ -42,13 +42,13 @@
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
                         <VBox prefHeight="200.0" prefWidth="200.0" />
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Reward #1">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Reward #1" styleClass="text-id">
                            <font>
                               <Font size="72.0" />
                            </font>
                         </Text>
                         <VBox prefHeight="200.0" prefWidth="250.0" />
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Reward #2">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Reward #2" styleClass="text-id">
                            <font>
                               <Font size="72.0" />
                            </font>
@@ -76,13 +76,13 @@
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
                         <VBox prefHeight="200.0" prefWidth="150.0" />
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="E-Scooter Coupon">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="E-Scooter Coupon" styleClass="text-id">
                            <font>
                               <Font size="36.0" />
                            </font>
                         </Text>
                         <VBox prefHeight="400.0" prefWidth="200.0" />
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Coffee-Shop Coupon">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Coffee-Shop Coupon" styleClass="text-id">
                            <font>
                               <Font size="36.0" />
                            </font>
@@ -95,12 +95,12 @@
                         <VBox prefHeight="200.0" prefWidth="200.0" />
                         <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
                            <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Press this button">
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Press this button" styleClass="text-id">
                                  <font>
                                     <Font size="24.0" />
                                  </font>
                               </Text>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="for reward #1">
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="for reward #1" styleClass="text-id">
                                  <font>
                                     <Font size="24.0" />
                                  </font>
@@ -115,12 +115,12 @@
                         <VBox prefHeight="200.0" prefWidth="350.0" />
                         <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
                            <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Press this button">
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Press this button" styleClass="text-id">
                                  <font>
                                     <Font size="24.0" />
                                  </font>
                               </Text>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="for reward #2">
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="for reward #2" styleClass="text-id">
                                  <font>
                                     <Font size="24.0" />
                                  </font>

@@ -1,0 +1,18 @@
+/*
+ *
+ */
+
+.root {
+    -fx-background-color: #DA121A;
+    -fx-text-fill: #FFFFFF;
+    -fx-fill: #FFFFFF;
+}
+
+.text-id {
+    -fx-fill: #FFFFFF;
+}
+
+.button {
+    -fx-background-color: #038d0a;
+    -fx-text-fill: #FFFFFF;
+}
