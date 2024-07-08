@@ -1,3 +1,4 @@
+//TODO delete dead code
 package gui;
 
 import java.io.IOException;
@@ -12,6 +13,7 @@ import javafx.scene.Cursor;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
@@ -42,6 +44,8 @@ public class UserInterfaceController {
     private final int totalQuestionsToAsk = 5;
     private boolean gameEnded = false;
     private boolean isFactScene = false;
+    private Pools.Question currentQuestion = null;
+    private Pools.Question lastQuestion = null;
 
     private List<Question> questions = new ArrayList<>(List.of(
             new Question("Is the sky blue?", "Yes", "No", "Yes",
@@ -88,13 +92,14 @@ public class UserInterfaceController {
     @FXML
     public void initialize() {
         // Shuffle and select 5 questions from the pool
-        Collections.shuffle(questions, new Random());
-        selectedQuestions = questions.subList(0, totalQuestionsToAsk);
+        //Collections.shuffle(questions, new Random());
+        //selectedQuestions = questions.subList(0, totalQuestionsToAsk);
 
         // sets the visibility of the question and fact scenes
         isFactScene = false;
         questionScene.setVisible(!isFactScene);
         factScene.setVisible(isFactScene);
+
 
         updateQuestion();
         button1.setOnAction(e -> handleAnswer(button1.getText()));
@@ -105,22 +110,27 @@ public class UserInterfaceController {
                 newScene.addEventHandler(KeyEvent.KEY_RELEASED, this::handleKeyPressed);
             }
         });
+
     }
 
     private void updateQuestion() {
-        if (currentQuestionIndex < selectedQuestions.size()) {
-            Question currentQuestion = selectedQuestions.get(currentQuestionIndex);
-            questionTxt.setText(currentQuestion.getText());
-            button1.setText(currentQuestion.getOptionA());
-            button2.setText(currentQuestion.getOptionB());
+        if (currentQuestionIndex < Pools.getNumberOfTopics()) {//selectedQuestions.size()) {
+            //lastQuestion = currentQuestion;
+            currentQuestion = Pools.getQuestion(currentQuestionIndex);//selectedQuestions.get(currentQuestionIndex);
+            questionTxt.setText(currentQuestion.getQuestion());
+            Random random = new Random();
+            int randomInt = random.nextInt(2);
+            String[] options = {currentQuestion.getCorrectAnswer(), currentQuestion.getWrongAnswer()};
+            button1.setText(options[randomInt++]);
+            button2.setText(options[randomInt % 2]);
             correctAnswersCounter.setText(correctAnswers + "/" + requiredCorrectAnswers);
 
             // Display the fun fact associated with the previous question
-            int lastquestIdx = currentQuestionIndex - 1;
-            if (lastquestIdx >= 0) {
-                Question lastQuestion = selectedQuestions.get(lastquestIdx);
-                funFactTxt.setText(lastQuestion.getFunFact());
-            }
+            /*int lastquestIdx = currentQuestionIndex - 1;
+            if (lastquestIdx >= 0 && lastQuestion != null) {
+                //Question lastQuestion = selectedQuestions.get(lastquestIdx);
+                funFactTxt.setText(lastQuestion.getDescription());
+            }*/
             // funFactTxt.setText(currentQuestion.getFunFact()); // Display the fun fact
             // associated with the current
             // question
@@ -129,12 +139,18 @@ public class UserInterfaceController {
         }
     }
 
+    private void showDescription() {
+        funFactTxt.setText(currentQuestion.getDescription());
+        button1.setText("Next");
+        button2.setText("Next");
+    }
+
     private void handleAnswer(String answer) {
         if (gameEnded) {
             return;
         }
 
-        Question currentQuestion = selectedQuestions.get(currentQuestionIndex);
+        //Question currentQuestion = selectedQuestions.get(currentQuestionIndex);
         if (answer.equals(currentQuestion.getCorrectAnswer())) {
             correctAnswers++;
         }
@@ -145,7 +161,7 @@ public class UserInterfaceController {
         if (currentQuestionIndex >= totalQuestionsToAsk) {
             endGame();
         } else {
-            updateQuestion();
+            showDescription();
         }
     }
 
@@ -154,10 +170,12 @@ public class UserInterfaceController {
             switchToScreenSaver();
             return;
         }
+        if (event.getCode() == KeyCode.Y || event.getCode() == KeyCode.N)
         if (isFactScene) {
             isFactScene = false;
             questionScene.setVisible(!isFactScene);
             factScene.setVisible(isFactScene);
+            updateQuestion();
 
         } else {
             isFactScene = true;
