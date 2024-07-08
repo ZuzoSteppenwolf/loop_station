@@ -1,5 +1,7 @@
 package gui;
 
+import java.net.URL;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Cursor;
@@ -36,7 +38,11 @@ public class QuizGame extends Application {
         screenSaverStage.setTitle("Screen Saver");
         
         // style the window
-        screenSaverStage.getScene().getStylesheets().add(getClass().getResource("/styles/style.css").toExternalForm());
+        URL style = getClass().getResource("/styles/style.css");
+        if (style == null) {
+            throw new IllegalArgumentException("Stylesheet not found: /styles/style.css");
+        }
+        screenSaverStage.getScene().getStylesheets().add(style.toExternalForm());
 
         // Set the size of the window
         screenSaverStage.setWidth(1080);

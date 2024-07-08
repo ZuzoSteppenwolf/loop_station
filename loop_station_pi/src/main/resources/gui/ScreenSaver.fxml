@@ -27,7 +27,7 @@
                               <Font name="Dubai Medium" size="64.0" />
                            </font>
                         </Text>
-                        <Text fx:id="screenSaverText" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" styleClass="text-id">
+                        <Text fx:id="screenSaverText" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" styleClass="text-id" wrappingWidth="1000.0">
                            <font>
                               <Font name="Cambria" size="48.0" />
                            </font>
