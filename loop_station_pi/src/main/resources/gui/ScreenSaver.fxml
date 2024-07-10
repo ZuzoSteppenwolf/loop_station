@@ -10,7 +10,7 @@
    <top>
       <BorderPane prefHeight="350.0" prefWidth="1080.0" BorderPane.alignment="CENTER">
          <center>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-id" text="Loop Station" BorderPane.alignment="CENTER">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-id" text="Circle-Mat" BorderPane.alignment="CENTER">
                <font>
                   <Font name="Franklin Gothic Demi" size="96.0" />
                </font>

@@ -16,6 +16,7 @@ import javafx.scene.control.Button;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.VBox;
+import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -25,6 +26,10 @@ public class UserInterfaceController {
     private VBox questionScene;
     @FXML
     private VBox factScene;
+    @FXML
+    private HBox questionSceneBottom;
+    @FXML
+    private VBox factSceneBottom;
     @FXML
     private Text questionTxt;
     @FXML
@@ -37,6 +42,8 @@ public class UserInterfaceController {
     private Button button1;
     @FXML
     private Button button2;
+    @FXML
+    private Text confirmText;
 
     private int currentQuestionIndex = 0;
     private int correctAnswers = 0;
@@ -91,15 +98,11 @@ public class UserInterfaceController {
 
     @FXML
     public void initialize() {
-        // Shuffle and select 5 questions from the pool
-        //Collections.shuffle(questions, new Random());
-        //selectedQuestions = questions.subList(0, totalQuestionsToAsk);
+
 
         // sets the visibility of the question and fact scenes
         isFactScene = false;
-        questionScene.setVisible(!isFactScene);
-        factScene.setVisible(isFactScene);
-
+        setFactScene(isFactScene);
 
         updateQuestion();
         button1.setOnAction(e -> handleAnswer(button1.getText()));
@@ -113,10 +116,22 @@ public class UserInterfaceController {
 
     }
 
+    /*
+     * Set the visibility of the question and fact scenes.
+     * 
+     * @param isScene True if the fact scene should be visible, false otherwise.
+     */
+    private void setFactScene(boolean isScene) {
+        questionScene.setVisible(!isScene);
+        questionSceneBottom.setVisible(!isScene);
+        factScene.setVisible(isScene);
+        factSceneBottom.setVisible(isScene);
+    }
+
     private void updateQuestion() {
-        if (currentQuestionIndex < Pools.getNumberOfTopics()) {//selectedQuestions.size()) {
-            //lastQuestion = currentQuestion;
-            currentQuestion = Pools.getQuestion(currentQuestionIndex);//selectedQuestions.get(currentQuestionIndex);
+        if (currentQuestionIndex < Pools.getNumberOfTopics()) {
+            
+            currentQuestion = Pools.getQuestion(currentQuestionIndex);
             questionTxt.setText(currentQuestion.getQuestion());
             Random random = new Random();
             int randomInt = random.nextInt(2);
@@ -125,15 +140,6 @@ public class UserInterfaceController {
             button2.setText(options[randomInt % 2]);
             correctAnswersCounter.setText(correctAnswers + "/" + requiredCorrectAnswers);
 
-            // Display the fun fact associated with the previous question
-            /*int lastquestIdx = currentQuestionIndex - 1;
-            if (lastquestIdx >= 0 && lastQuestion != null) {
-                //Question lastQuestion = selectedQuestions.get(lastquestIdx);
-                funFactTxt.setText(lastQuestion.getDescription());
-            }*/
-            // funFactTxt.setText(currentQuestion.getFunFact()); // Display the fun fact
-            // associated with the current
-            // question
         } else {
             endGame();
         }
@@ -153,6 +159,9 @@ public class UserInterfaceController {
         //Question currentQuestion = selectedQuestions.get(currentQuestionIndex);
         if (answer.equals(currentQuestion.getCorrectAnswer())) {
             correctAnswers++;
+            confirmText.setText("Correct!");
+        } else {
+            confirmText.setText("Incorrect!");
         }
         currentQuestionIndex++;
 
@@ -173,14 +182,12 @@ public class UserInterfaceController {
         if (event.getCode() == KeyCode.Y || event.getCode() == KeyCode.N)
         if (isFactScene) {
             isFactScene = false;
-            questionScene.setVisible(!isFactScene);
-            factScene.setVisible(isFactScene);
+            setFactScene(isFactScene);
             updateQuestion();
 
         } else {
             isFactScene = true;
-            questionScene.setVisible(!isFactScene);
-            factScene.setVisible(isFactScene);
+            setFactScene(isFactScene);
 
             switch (event.getCode()) {
                 case Y:
@@ -200,6 +207,7 @@ public class UserInterfaceController {
         if (correctAnswers >= requiredCorrectAnswers) {
             showRewardScreen();
         } else {
+            factSceneBottom.setVisible(false);
             funFactTxt.setText("Sorry, you lost :(");
             funFactField.setText("Press any button to go back to the home screen");
         }
@@ -247,8 +255,6 @@ public class UserInterfaceController {
             rewardStage.setScene(scene);
             rewardStage.getScene().setCursor(Cursor.NONE);
             rewardStage.setTitle("Choose Your Reward");
-
-            //rewardStage.getScene().getStylesheets().add(getClass().getResource("/styles/style.css").toExternalForm());
 
             rewardStage.setFullScreenExitHint("");
             rewardStage.setFullScreen(true);
