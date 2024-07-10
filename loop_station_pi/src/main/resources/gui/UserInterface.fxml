@@ -98,7 +98,7 @@
                   <HBox prefHeight="100.0" prefWidth="50.0" />
                </children>
             </HBox>
-            <VBox fx:id="factSceneBottom" alignment="TOP_CENTER" prefHeight="650.0" prefWidth="1080.0" BorderPane.alignment="CENTER">
+            <VBox fx:id="factSceneBottom" alignment="CENTER" prefHeight="650.0" prefWidth="1080.0" BorderPane.alignment="CENTER">
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-id" text="PRESS ANY BUTTON FOR NEXT QUESTION" textAlignment="CENTER" wrappingWidth="700.0">
                      <font>
