@@ -1,3 +1,8 @@
+/*
+ * Main class of the application. Starts the screen saver stage.
+ * 
+ * @author Klaus Xhoxhi, Marvin Wollbrück
+ */
 package gui;
 
 import java.net.URL;
@@ -21,6 +26,11 @@ public class QuizGame extends Application {
         }
     }
 
+    /*
+     * Shows the screen saver stage.
+     * 
+     * @throws Exception if the FXML file is not found or the controller is null
+     */
     private void showScreenSaverStage() throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/ScreenSaver.fxml"));
         Parent root = loader.load();

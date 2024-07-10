@@ -1,3 +1,9 @@
+/*
+ * This class is the controller for the reward screen.
+ * It handles the selection of a reward and the transition to the screen saver.
+ * 
+ * @author Klaus Xhoxhi, Marvin Wollbrück
+ */
 package gui;
 
 import java.io.IOException;
@@ -28,16 +34,31 @@ public class RewardScreenController {
     @FXML
     private Text ChooseRewardText;
 
+    /* Path for the first QR-Code */
     private static final String QR_CODE_1 = "/photos/QRcode.png";
+    /* Path for the second QR-Code */
     private static final String QR_CODE_2 = "/photos/qr_code2.png";
 
+    /* if a reward was chosen */
     private boolean rewardChosen = false;
 
+     /*
+     * Set the eventHandler of the Scene
+     * 
+     * @param scene The Scene to set the eventHandler to
+     */
     public void setScene(Scene scene) {
         // Add key event handler to select the reward
         scene.addEventHandler(KeyEvent.KEY_RELEASED, this::handleKeyPress);
     }
 
+    /*
+     * Handle the key press event
+     * By pressing 'Y' the first reward is selected
+     * and by pressing 'N' the second reward is selected
+     * 
+     * @param event The KeyEvent to handle
+     */
     private void handleKeyPress(KeyEvent event) {
         if (!rewardChosen) {
             switch (event.getCode()) {
@@ -55,6 +76,11 @@ public class RewardScreenController {
         }
     }
 
+    /*
+     * Select a reward by its number
+     * 
+     * @param rewardNumber The number of the reward to select
+     */
     private void selectReward(int rewardNumber) {
         try {
             String imagePath;
@@ -77,6 +103,13 @@ public class RewardScreenController {
         }
     }
 
+    /*
+     * Load an image from the resources folder
+     * 
+     * @param path The path to the image
+     * 
+     * @return The loaded image
+     */
     private Image loadImage(String path) {
         InputStream imageStream = getClass().getResourceAsStream(path);
         if (imageStream == null) {
@@ -85,6 +118,9 @@ public class RewardScreenController {
         return new Image(imageStream);
     }
 
+    /*
+     * Go to the screen saver
+     */
     private void goToScreenSaver() {
         Stage stage = (Stage) CongratsText.getScene().getWindow();
         stage.close();

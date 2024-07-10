@@ -21,8 +21,7 @@ class Pools {
         "Different Industries", 
         "Trash Seperation", 
         "Circular Consumption Options" };
-    // TODO Questions may are not in correct topic.
-    // TODO add more questions
+
     /* The Pools of Questions */
     private static final Map<Integer, List<Question>> POOLS = new HashMap<>( Map.of(
         0, new ArrayList<>( List.of(

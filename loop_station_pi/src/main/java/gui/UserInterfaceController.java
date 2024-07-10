@@ -1,10 +1,11 @@
-//TODO delete dead code
+/*
+ * This file is the controller for the main game screen.
+ * 
+ * @author Klaus Xhoxhi, Marvin Wollbrück
+ */
 package gui;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 import java.util.Random;
 
 import javafx.fxml.FXML;
@@ -45,56 +46,20 @@ public class UserInterfaceController {
     @FXML
     private Text confirmText;
 
+    /* The Index of the current Question */
     private int currentQuestionIndex = 0;
+    /* Counter for correct answers */
     private int correctAnswers = 0;
+    /* const Number of correct answers required to win the game */
     private final int requiredCorrectAnswers = 3;
+    /* const Number of total questions to ask */
     private final int totalQuestionsToAsk = 5;
+    /* Boolean to check if the game has ended */
     private boolean gameEnded = false;
+    /* Boolean to check if the current scene is a fact scene */
     private boolean isFactScene = false;
+    /* The current question */
     private Pools.Question currentQuestion = null;
-    private Pools.Question lastQuestion = null;
-
-    private List<Question> questions = new ArrayList<>(List.of(
-            new Question("Is the sky blue?", "Yes", "No", "Yes",
-                    "The sky appears blue because of the way sunlight interacts with Earth's atmosphere."),
-
-            new Question("Is grass green?", "Yes", "No", "Yes",
-                    "Grass is green due to the presence of chlorophyll."),
-
-            new Question("Do cats meow?", "Yes", "No", "Yes",
-                    "Cats meow as a way to communicate with humans."),
-
-            new Question("Is 5 greater than 3?", "Yes", "No", "Yes",
-                    "In basic arithmetic, 5 is greater than 3."),
-
-            new Question("Is 2 less than 4?", "Yes", "No", "Yes",
-                    "In basic arithmetic, 2 is less than 4."),
-
-            new Question("Is 7 greater than 10?", "Yes", "No", "No",
-                    "In basic arithmetic, 7 is less than 10."),
-
-            new Question("Do birds fly?", "Yes", "No", "Yes",
-                    "Most birds have the ability to fly."),
-
-            new Question("Is water wet?", "Yes", "No", "Yes",
-                    "Water makes things wet and is itself wet."),
-
-            new Question("Do fish swim?", "Yes", "No", "Yes",
-                    "Fish swim by moving their tails and fins."),
-
-            new Question("Is fire hot?", "Yes", "No", "Yes",
-                    "Fire is a source of heat."),
-
-            new Question("Which is faster?", "Car", "Bicycle", "Car",
-                    "Cars generally travel faster than bicycles."),
-
-            new Question("Which is taller?", "Tree", "House", "Tree",
-                    "Many trees grow taller than houses."),
-
-            new Question("Which is heavier?", "Elephant", "Mouse", "Elephant",
-                    "Elephants are significantly heavier than mice.")));
-
-    private List<Question> selectedQuestions;
 
     @FXML
     public void initialize() {
@@ -128,16 +93,24 @@ public class UserInterfaceController {
         factSceneBottom.setVisible(isScene);
     }
 
+    /*
+     * Update the question and the answers.
+     */
     private void updateQuestion() {
+        // Check if there are more questions to ask
         if (currentQuestionIndex < Pools.getNumberOfTopics()) {
             
             currentQuestion = Pools.getQuestion(currentQuestionIndex);
             questionTxt.setText(currentQuestion.getQuestion());
+
+            // Randomly set the correct and wrong answers
             Random random = new Random();
             int randomInt = random.nextInt(2);
             String[] options = {currentQuestion.getCorrectAnswer(), currentQuestion.getWrongAnswer()};
             button1.setText(options[randomInt++]);
             button2.setText(options[randomInt % 2]);
+
+            // show the number of correct answers
             correctAnswersCounter.setText(correctAnswers + "/" + requiredCorrectAnswers);
 
         } else {
@@ -145,18 +118,29 @@ public class UserInterfaceController {
         }
     }
 
+    /*
+     * Show the description of the question.
+     */
     private void showDescription() {
         funFactTxt.setText(currentQuestion.getDescription());
         button1.setText("Next");
         button2.setText("Next");
     }
 
+    /*
+     * Handle the answer of the user.
+     * If the answer is correct, increment the 'correctAnswers' counter.
+     * Show a message if the answer is correct or incorrect.
+     * Increment the 'currentQuestionIndex' counter.
+     * 
+     * @param answer The answer of the user.
+     */
     private void handleAnswer(String answer) {
         if (gameEnded) {
             return;
         }
 
-        //Question currentQuestion = selectedQuestions.get(currentQuestionIndex);
+        // Check if the answer is correct
         if (answer.equals(currentQuestion.getCorrectAnswer())) {
             correctAnswers++;
             confirmText.setText("Correct!");
@@ -167,6 +151,7 @@ public class UserInterfaceController {
 
         correctAnswersCounter.setText(correctAnswers + "/" + requiredCorrectAnswers);
 
+        // Check if the game has ended
         if (currentQuestionIndex >= totalQuestionsToAsk) {
             endGame();
         } else {
@@ -174,36 +159,51 @@ public class UserInterfaceController {
         }
     }
 
+    /*
+     * Handle the key pressed event.
+     * Valid keys are Y and N.
+     * 
+     * @param event The key event.
+     */
     private void handleKeyPressed(KeyEvent event) {
         if (gameEnded) {
             switchToScreenSaver();
             return;
         }
+
+        // Check if the user has answered the question
         if (event.getCode() == KeyCode.Y || event.getCode() == KeyCode.N)
-        if (isFactScene) {
-            isFactScene = false;
-            setFactScene(isFactScene);
-            updateQuestion();
+            // Check which scene is Active
+            if (isFactScene) {
+                isFactScene = false;
+                setFactScene(isFactScene);
+                updateQuestion();
 
-        } else {
-            isFactScene = true;
-            setFactScene(isFactScene);
+            } else {
+                isFactScene = true;
+                setFactScene(isFactScene);
 
-            switch (event.getCode()) {
-                case Y:
-                    handleAnswer(button1.getText());
-                    break;
-                case N:
-                    handleAnswer(button2.getText());
-                    break;
-                default: {
+                switch (event.getCode()) {
+                    case Y:
+                        handleAnswer(button1.getText());
+                        break;
+                    case N:
+                        handleAnswer(button2.getText());
+                        break;
+                    default: {
+                    }
                 }
             }
-        }
     }
 
+    /*
+     * End the game.
+     * If the user has answered enough questions correctly, show the reward screen.
+     * Otherwise, show a message that the user has lost.
+     */
     private void endGame() {
         gameEnded = true;
+        // Check if the user has answered enough questions correctly
         if (correctAnswers >= requiredCorrectAnswers) {
             showRewardScreen();
         } else {
@@ -213,6 +213,10 @@ public class UserInterfaceController {
         }
     }
 
+    /*
+     * Switch to the screen saver.
+     * Current Stage is closed and the screen saver is shown.
+     */
     private void switchToScreenSaver() {
         try {
             Stage stage = (Stage) questionTxt.getScene().getWindow();
@@ -241,6 +245,10 @@ public class UserInterfaceController {
         }
     }
 
+    /*
+     * Show the reward screen.
+     * Current Stage is closed and the reward screen is shown.
+     */
     private void showRewardScreen() {
         try {
             Stage gameStage = (Stage) questionTxt.getScene().getWindow();
@@ -264,42 +272,6 @@ public class UserInterfaceController {
             rewardStage.show();
         } catch (IOException e) {
             e.printStackTrace();
-        }
-    }
-
-    private static class Question {
-        private final String text;
-        private final String optionA;
-        private final String optionB;
-        private final String correctAnswer;
-        private final String funFact;
-
-        public Question(String text, String optionA, String optionB, String correctAnswer, String funFact) {
-            this.text = text;
-            this.optionA = optionA;
-            this.optionB = optionB;
-            this.correctAnswer = correctAnswer;
-            this.funFact = funFact;
-        }
-
-        public String getText() {
-            return text;
-        }
-
-        public String getOptionA() {
-            return optionA;
-        }
-
-        public String getOptionB() {
-            return optionB;
-        }
-
-        public String getCorrectAnswer() {
-            return correctAnswer;
-        }
-
-        public String getFunFact() {
-            return funFact;
         }
     }
 

@@ -1,3 +1,8 @@
+/*
+ * This file is the controller for the screen saver.
+ * 
+ * @author Klaus Xhoxhi, Marvin Wollbrück
+ */
 package gui;
 
 import java.net.URL;
@@ -24,6 +29,7 @@ public class ScreenSaverController implements Initializable {
     @FXML
     private Text screenSaverText;
 
+    /* List of FunFacts */
     private final List<String> funFacts = List.of(
             "Honey never spoils.",
             "Bananas are berries.",
@@ -37,6 +43,7 @@ public class ScreenSaverController implements Initializable {
             "Wombat poop is cube-shaped."
     );
 
+    /* Timeline to iterate the FunFacts */
     private Timeline factTimeline;
 
     @Override
@@ -52,11 +59,22 @@ public class ScreenSaverController implements Initializable {
         screenSaverText.setText(funFacts.get(new Random().nextInt(funFacts.size())));
     }
 
+    /*
+     * Set the eventHandler of the Scene
+     * 
+     * @param scene The Scene to set the eventHandler to
+     */
     public void setScene(Scene scene) {
         // Add key event handler to switch to the game screen
         scene.addEventHandler(KeyEvent.KEY_RELEASED, this::handleKeyPress);
     }
 
+    /*
+     * Handle the key press event
+     * Switch to the game screen if the user presses 'Y' or 'N'
+     * 
+     * @param event The KeyEvent to handle
+     */
     private void handleKeyPress(KeyEvent event) {
         switch (event.getCode()) {
             case Y: 
